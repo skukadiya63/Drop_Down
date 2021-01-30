@@ -1,0 +1,37 @@
+# Drop-Down
+
+
+
+let dropDown = DropDown()
+
+
+func setDropDownCountryCode() {
+        
+        dropDown.dataSource = arrcurr as! [String]
+        
+        dropDown.anchorView = DropDownView
+        dropDown.direction = .any
+        
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            print("Selected item: \(item) at index: \(index)")
+            
+            let arrSplit1 = item.components(separatedBy: " ")
+            
+            appDelagte.currency = (arrSplit1[0] as? String)!
+            //let currancy = appDelagte.currency
+            self.txtcurrency.text = item
+            
+            print(appDelagte.currency)
+            self.txtcurrency.text = item
+            self.CallChangeCurrancyAPI()
+            
+        }
+        //             dropDown.bottomOffset = CGPoint(x: 0, y: dropdown.bounds.height)
+        //             dropDown.topOffset = CGPoint(x: 0, y: dropdown.bounds.height)
+        dropDown.dismissMode = .onTap
+        dropDown.textColor = UIColor.darkGray
+        dropDown.backgroundColor = UIColor.white
+        dropDown.selectionBackgroundColor = UIColor.clear
+        dropDown.reloadAllComponents()
+        
+    }
